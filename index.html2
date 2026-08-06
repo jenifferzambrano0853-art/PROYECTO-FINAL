@@ -1,456 +1,365 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jeniffer Zambrano — Perfil académico</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --paper:#F5F8FC;
-    --paper-2:#E8F0FA;
-    --ink:#0F2A47;
-    --ink-soft:#4C6478;
-    --teal:#1B5FC4;
-    --teal-dark:#0F3E85;
-    --brass:#3B82C7;
-    --line:#D6E3F2;
-    --white:#FFFFFF;
-    --radius:14px;
-  }
-
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  @media (prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto;}
-    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
-  }
-
-  body{
-    margin:0;
-    background:var(--paper);
-    background-image:
-      linear-gradient(var(--line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line) 1px, transparent 1px);
-    background-size: 42px 42px;
-    background-position:-1px -1px;
-    color:var(--ink);
-    font-family:'IBM Plex Sans', sans-serif;
-    line-height:1.6;
-  }
-
-  .wrap{
-    max-width:920px;
-    margin:0 auto;
-    padding:0 24px;
-  }
-
-  /* ---------- HEADER ---------- */
-  header.hero{
-    padding:64px 0 40px;
-    animation:riseIn .7s ease both;
-  }
-  @keyframes riseIn{
-    from{opacity:0; transform:translateY(10px);}
-    to{opacity:1; transform:translateY(0);}
-  }
-  .eyebrow{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:13px;
-    letter-spacing:.08em;
-    color:var(--teal-dark);
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-bottom:18px;
-  }
-  .eyebrow::before{
-    content:"";
-    width:22px;
-    height:1px;
-    background:var(--teal);
-    display:inline-block;
-  }
-  h1{
-    font-family:'Fraunces', serif;
-    font-weight:600;
-    font-size:clamp(34px, 6vw, 56px);
-    line-height:1.05;
-    margin:0 0 20px;
-    letter-spacing:-0.01em;
-  }
-  .bio{
-    max-width:62ch;
-    font-size:17px;
-    color:var(--ink-soft);
-  }
-  .bio strong{color:var(--ink); font-weight:600;}
-
-  /* ---------- CREDENCIAL (foto + universidad, unidos) ---------- */
-  section.credential{
-    margin:36px 0 64px;
-  }
-  .card{
-    background:var(--white);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    box-shadow:0 1px 2px rgba(28,35,33,0.04), 0 12px 28px -18px rgba(28,35,33,0.25);
-    overflow:hidden;
-    display:grid;
-    grid-template-columns: 220px 1fr;
-  }
-  @media (max-width:640px){
-    .card{grid-template-columns:1fr;}
-  }
-
-  .photo-cell{
-    background:
-      repeating-linear-gradient(135deg, var(--paper-2) 0 10px, var(--paper) 10px 20px);
-    border-right:1px solid var(--line);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:28px;
-    position:relative;
-  }
-  @media (max-width:640px){
-    .photo-cell{border-right:none; border-bottom:1px solid var(--line);}
-  }
-  .photo-frame{
-    width:150px;
-    height:150px;
-    border-radius:50%;
-    background:var(--white);
-    border:2px dashed var(--brass);
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    overflow:hidden;
-  }
-  .photo-frame img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-  }
-  .photo-frame .placeholder-text{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:11px;
-    color:var(--brass);
-    padding:0 12px;
-    line-height:1.4;
-  }
-  .photo-frame .monogram{
-    font-family:'Fraunces', serif;
-    font-size:30px;
-    color:var(--teal-dark);
-    font-weight:600;
-    margin-bottom:4px;
-  }
-
-  .info-cell{
-    padding:28px 30px;
-  }
-  .info-cell .uni-name{
-    font-family:'Fraunces', serif;
-    font-size:22px;
-    font-weight:600;
-    color:var(--teal-dark);
-    margin:0 0 4px;
-  }
-  .info-cell .seal-tag{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
-    color:var(--ink-soft);
-    margin:0 0 18px;
-  }
-  dl.data-grid{
-    display:grid;
-    grid-template-columns:auto 1fr;
-    gap:8px 18px;
-    margin:0;
-  }
-  dl.data-grid dt{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12.5px;
-    color:var(--teal);
-    text-transform:uppercase;
-    letter-spacing:.03em;
-    white-space:nowrap;
-    padding-top:2px;
-  }
-  dl.data-grid dd{
-    margin:0;
-    font-size:15px;
-    color:var(--ink);
-    font-weight:500;
-  }
-
-  /* ---------- UNIDADES NAV ---------- */
-  section.units{
-    padding-bottom:80px;
-  }
-  .units-heading{
-    display:flex;
-    align-items:baseline;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:8px;
-    margin-bottom:18px;
-  }
-  .units-heading h2{
-    font-family:'Fraunces', serif;
-    font-size:26px;
-    margin:0;
-    font-weight:600;
-  }
-  .units-heading .sub{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12.5px;
-    color:var(--ink-soft);
-  }
-
-  .tabs{
-    display:flex;
-    gap:2px;
-    border-bottom:1px solid var(--line);
-    margin-bottom:0;
-    flex-wrap:wrap;
-    position:relative;
-  }
-  .tab-btn{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:14px;
-    background:var(--paper-2);
-    border:1px solid var(--line);
-    border-bottom:none;
-    border-radius:10px 10px 0 0;
-    padding:12px 20px;
-    color:var(--ink-soft);
-    cursor:pointer;
-    position:relative;
-    top:1px;
-    transition:background .25s ease, color .25s ease, transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease;
-  }
-  .tab-btn::before{
-    content:"# ";
-    color:var(--teal);
-    transition:transform .25s ease;
-    display:inline-block;
-  }
-  .tab-btn:hover{
-    color:var(--ink);
-    transform:translateY(-4px);
-    box-shadow:0 8px 16px -8px rgba(27,95,196,0.35);
-  }
-  .tab-btn:hover::before{
-    transform:rotate(-12deg) scale(1.15);
-  }
-  .tab-btn:active{
-    transform:translateY(-1px) scale(.97);
-  }
-  .tab-btn:focus-visible{
-    outline:2px solid var(--teal);
-    outline-offset:2px;
-  }
-  .tab-btn[aria-selected="true"]{
-    background:var(--white);
-    color:var(--teal-dark);
-    border-bottom:1px solid var(--white);
-    font-weight:600;
-  }
-  .tab-indicator{
-    position:absolute;
-    bottom:-1px;
-    height:2px;
-    background:var(--teal);
-    border-radius:2px;
-    transition:left .35s cubic-bezier(.65,0,.35,1), width .35s cubic-bezier(.65,0,.35,1);
-  }
-
-  .panels{
-    background:var(--white);
-    border:1px solid var(--line);
-    border-top:none;
-    border-radius:0 0 var(--radius) var(--radius);
-    padding:34px 32px;
-    min-height:180px;
-    overflow:hidden;
-  }
-  .panel{display:none;}
-  .panel[aria-hidden="false"]{display:block; animation:panelIn .45s cubic-bezier(.22,1,.36,1) both;}
-  @keyframes panelIn{
-    from{opacity:0; transform:translateX(18px);}
-    to{opacity:1; transform:translateX(0);}
-  }
-  .panel h3{
-    transition:color .2s ease;
-  }
-  .pending{
-    transition:transform .2s ease, box-shadow .2s ease;
-  }
-  .pending:hover{
-    transform:translateY(-2px);
-    box-shadow:0 6px 14px -8px rgba(59,130,199,0.5);
-  }
-  .panel h3{
-    font-family:'Fraunces', serif;
-    font-size:22px;
-    margin:0 0 12px;
-  }
-  .panel p{
-    color:var(--ink-soft);
-    font-size:15px;
-    max-width:60ch;
-  }
-  .pending{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12.5px;
-    color:var(--brass);
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    margin-top:10px;
-    padding:8px 12px;
-    background:#EAF2FC;
-    border:1px dashed var(--brass);
-    border-radius:8px;
-  }
-
-  footer{
-    padding:28px 0 56px;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
-    color:var(--ink-soft);
-    border-top:1px solid var(--line);
-    text-align:center;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programación Básica y Algoritmia</title>
+  <!-- Importar fuente Poppins desde Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #e6d6f5;
+      color: #3b2f4a;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #b38cd9;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 2em;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+    .unidad, .tema {
+      margin: 15px;
+      border-radius: 10px;
+      background: #f5f0fa;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden; /* para respetar bordes redondeados */
+    }
+    .unidad h2, .tema h3 {
+      background: #c9a7eb;
+      margin: 0;
+      padding: 12px 18px;
+      cursor: pointer;
+      border-radius: 10px 10px 0 0;
+      user-select: none;
+      transition: background 0.2s;
+    }
+    .unidad h2:hover, .tema h3:hover {
+      background: #b38cd9;
+    }
+    .contenido, .detalle {
+      display: none;
+      padding: 15px;
+      line-height: 1.6;
+    }
+    .contenido.mostrar, .detalle.mostrar {
+      display: block;
+    }
+    .ejemplo, .ejercicio {
+      background: #ede3f7;
+      padding: 10px 15px;
+      border-left: 4px solid #b38cd9;
+      margin-top: 5px;
+      border-radius: 0 8px 8px 0;
+    }
+    .ejercicio input {
+      margin: 5px 5px 5px 0;
+      padding: 8px 12px;
+      border-radius: 5px;
+      border: 1px solid #b38cd9;
+      font-family: inherit;
+    }
+    button {
+      background: #b38cd9;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #6a4c93;
+    }
+    .cuestionario {
+      margin-top: 10px;
+    }
+    .cuestionario p {
+      margin: 8px 0 2px;
+      font-weight: 600;
+    }
+    .cuestionario label {
+      display: block;
+      margin: 2px 0 2px 20px;
+      font-weight: 400;
+    }
+    .resultado {
+      margin-top: 10px;
+      font-weight: bold;
+      padding: 8px;
+      background: #d9c9ed;
+      border-radius: 5px;
+      display: inline-block;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #b38cd9;
+      color: white;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
+  <header>📚 Programación Básica y Algoritmia</header>
 
-<div class="wrap">
-
-  <header class="hero">
-    <p class="eyebrow">perfil académico</p>
-    <h1>Jeniffer Zambrano</h1>
-    <p class="bio">
-      Actualmente continúo mi formación en la <strong>Universidad Técnica de Cotopaxi</strong>, en la carrera de
-      <strong>Ingeniería en Software</strong>, construyendo las bases de programación y algoritmia que sostienen
-      todo lo que vendrá después. <!-- Puedes editar este párrafo con tu historia personal -->
-    </p>
-  </header>
-
-  <section class="credential">
-    <div class="card">
-      <div class="photo-cell">
-        <div class="photo-frame">
-          <!-- Reemplaza esta línea con tu foto real, por ejemplo: -->
-          <!-- <img src="tu-foto.jpg" alt="Foto de Jeniffer Zambrano"> -->
-          <span class="monogram">JZ</span>
-          <span class="placeholder-text">Coloca aquí<br>tu fotografía</span>
+  <!-- ==================== UNIDAD 1 ==================== -->
+  <div class="unidad">
+    <h2 onclick="toggle(this)">Unidad 1: Estructura y Funcionamiento del Computador</h2>
+    <div class="contenido">
+      <!-- Tema 1.1 -->
+      <div class="tema">
+        <h3 onclick="toggle(this)">Modelo de Von Neumann y Harvard</h3>
+        <div class="detalle">
+          <p><strong>Von Neumann:</strong> misma memoria para datos e instrucciones (cuello de botella).</p>
+          <p><strong>Harvard:</strong> memorias separadas para datos e instrucciones, permite acceso simultáneo.</p>
         </div>
       </div>
-      <div class="info-cell">
-        <p class="uni-name">Universidad Técnica de Cotopaxi</p>
-        <p class="seal-tag">// datos académicos del curso</p>
-        <dl class="data-grid">
-          <dt>Facultad</dt>
-          <dd>Ciencias de las Ingenierías y Aplicadas</dd>
-          <dt>Carrera</dt>
-          <dd>Ingeniería en Software</dd>
-          <dt>Nivel</dt>
-          <dd>Nivelación</dd> <!-- Cambia aquí si es otro nivel -->
-          <dt>Asignatura</dt>
-          <dd>Programación y Algoritmia</dd> <!-- Cambia aquí si es otra asignatura -->
-          <dt>Profesor</dt>
-          <dd>Ing. René Quisaguano</dd> <!-- Cambia aquí por tu profesor -->
-        </dl>
+      <!-- Tema 1.2 -->
+      <div class="tema">
+        <h3 onclick="toggle(this)">Sistemas Operativos</h3>
+        <div class="detalle">
+          <p>Software que gestiona el hardware, proporciona servicios a las aplicaciones y actúa como intermediario entre el usuario y la máquina.</p>
+        </div>
       </div>
-    </div>
-  </section>
+      <!-- Tema 1.3 -->
+      <div class="tema">
+        <h3 onclick="toggle(this)">Sistemas de Numeración</h3>
+        <div class="detalle">
+          <p>Binario (base 2), octal (base 8) y hexadecimal (base 16). Son fundamentales en computación.</p>
+          <div class="ejercicio">
+            <input type="number" id="decimalInput" placeholder="Número decimal">
+            <button onclick="convertirBinario()">Convertir a Binario</button>
+            <p id="resultadoBinario" class="resultado"></p>
+          </div>
+        </div>
+      </div>
+      <!-- Tema 1.4 -->
+      <div class="tema">
+        <h3 onclick="toggle(this)">Aritmética Binaria</h3>
+        <div class="detalle">
+          <p>Suma, resta, multiplicación y división en base 2. Ejemplo: 101 + 11 = 1000.</p>
+        </div>
+      </div>
+      <!-- Tema 1.5 -->
+      <div class="tema">
+        <h3 onclick="toggle(this)">Álgebra de Boole</h3>
+        <div class="detalle">
+          <p>Operaciones lógicas (AND, OR, NOT). Leyes como absorción: A + A·B = A.</p>
+          <div class="ejercicio">
+            <button onclick="simplificar()">Simplificar A + A·B</button>
+            <p id="resultadoSimplificacion" class="resultado"></p>
+          </div>
+        </div>
+      </div>
+      <!-- Cuestionario Unidad 1 -->
+      <div class="tema">
+        <h3 onclick="toggle(this)">Cuestionario Unidad 1</h3>
+        <div class="detalle">
+          <form id="quizU1" class="cuestionario">
+            <p>1. ¿Qué arquitectura usa la misma memoria para datos e instrucciones?</p>
+            <label><input type="radio" name="q1" value="correcto"> Von Neumann</label>
+            <label><input type="radio" name="q1" value="incorrecto"> Harvard</label>
 
-  <section class="units">
-    <div class="units-heading">
-      <h2>Unidades de estudio</h2>
-      <span class="sub">programación y algoritmia — índice de contenidos</span>
-    </div>
+            <p>2. ¿Qué sistema de numeración utiliza solo 0 y 1?</p>
+            <label><input type="radio" name="q2" value="correcto"> Binario</label>
+            <label><input type="radio" name="q2" value="incorrecto"> Decimal</label>
 
-    <div class="tabs" role="tablist" aria-label="Unidades del curso">
-      <button class="tab-btn" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true" data-target="1">unidad-1</button>
-      <button class="tab-btn" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" data-target="2">unidad-2</button>
-      <button class="tab-btn" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" data-target="3">unidad-3</button>
-      <span class="tab-indicator" id="tab-indicator"></span>
-    </div>
+            <p>3. ¿Cuál es el resultado de 101 + 11 en binario?</p>
+            <label><input type="radio" name="q3" value="correcto"> 1000</label>
+            <label><input type="radio" name="q3" value="incorrecto"> 1110</label>
 
-    <div class="panels">
-      <div class="panel" id="panel-1" role="tabpanel" aria-labelledby="tab-1" aria-hidden="false">
-        <h3>Unidad 1</h3>
-        <p>Este espacio está listo para el contenido de la primera unidad.</p>
-        <span class="pending">⏳ contenido pendiente por agregar</span>
-      </div>
-      <div class="panel" id="panel-2" role="tabpanel" aria-labelledby="tab-2" aria-hidden="true">
-        <h3>Unidad 2</h3>
-        <p>Este espacio está listo para el contenido de la segunda unidad.</p>
-        <span class="pending">⏳ contenido pendiente por agregar</span>
-      </div>
-      <div class="panel" id="panel-3" role="tabpanel" aria-labelledby="tab-3" aria-hidden="true">
-        <h3>Unidad 3</h3>
-        <p>Este espacio está listo para el contenido de la tercera unidad.</p>
-        <span class="pending">⏳ contenido pendiente por agregar</span>
+            <p>4. ¿Qué simplificación corresponde a A + A·B?</p>
+            <label><input type="radio" name="q4" value="correcto"> A</label>
+            <label><input type="radio" name="q4" value="incorrecto"> A·B</label>
+
+            <br><button type="button" onclick="calificar('quizU1','resultadoU1',4)">Calificar</button>
+            <p id="resultadoU1" class="resultado"></p>
+          </form>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+
+  <!-- ==================== UNIDAD 2 ==================== -->
+  <div class="unidad">
+    <h2 onclick="toggle(this)">Unidad 2: Algoritmos, Diagramas de Flujo y Pseudocódigo</h2>
+    <div class="contenido">
+      <div class="tema">
+        <h3 onclick="toggle(this)">Algoritmos</h3>
+        <div class="detalle">
+          <p>Conjunto finito de pasos ordenados y no ambiguos que resuelven un problema.</p>
+        </div>
+      </div>
+      <div class="tema">
+        <h3 onclick="toggle(this)">Diagramas de Flujo</h3>
+        <div class="detalle">
+          <p>Representación gráfica de un algoritmo usando figuras geométricas (rectángulos, rombos, etc.).</p>
+        </div>
+      </div>
+      <div class="tema">
+        <h3 onclick="toggle(this)">Pseudocódigo</h3>
+        <div class="detalle">
+          <p>Descripción textual de un algoritmo usando un lenguaje cercano al natural, sin sintaxis de un lenguaje específico.</p>
+        </div>
+      </div>
+      <div class="tema">
+        <h3 onclick="toggle(this)">Modelado de Problemas</h3>
+        <div class="detalle">
+          <p>Transformar una situación real en un algoritmo: identificar entradas, procesos y salidas.</p>
+        </div>
+      </div>
+      <!-- Cuestionario Unidad 2 -->
+      <div class="tema">
+        <h3 onclick="toggle(this)">Cuestionario Unidad 2</h3>
+        <div class="detalle">
+          <form id="quizU2" class="cuestionario">
+            <p>1. ¿Qué es un algoritmo?</p>
+            <label><input type="radio" name="q5" value="correcto"> Conjunto de pasos ordenados</label>
+            <label><input type="radio" name="q5" value="incorrecto"> Un lenguaje de programación</label>
+
+            <p>2. ¿Qué herramienta gráfica representa algoritmos?</p>
+            <label><input type="radio" name="q6" value="correcto"> Diagrama de flujo</label>
+            <label><input type="radio" name="q6" value="incorrecto"> Mapa conceptual</label>
+
+            <p>3. ¿Qué ventaja tiene el pseudocódigo?</p>
+            <label><input type="radio" name="q7" value="correcto"> Es fácil de entender</label>
+            <label><input type="radio" name="q7" value="incorrecto"> Solo funciona en Python</label>
+
+            <p>4. ¿Qué símbolo se usa en diagramas de flujo para decisiones?</p>
+            <label><input type="radio" name="q8" value="correcto"> Rombo</label>
+            <label><input type="radio" name="q8" value="incorrecto"> Rectángulo</label>
+
+            <p>5. ¿Qué significa modelar un problema?</p>
+            <label><input type="radio" name="q9" value="correcto"> Representar una situación real en pasos lógicos</label>
+            <label><input type="radio" name="q9" value="incorrecto"> Dibujar un mapa conceptual</label>
+
+            <br><button type="button" onclick="calificar('quizU2','resultadoU2',5)">Calificar</button>
+            <p id="resultadoU2" class="resultado"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== UNIDAD 3 ==================== -->
+  <div class="unidad">
+    <h2 onclick="toggle(this)">Unidad 3: Programación</h2>
+    <div class="contenido">
+      <div class="tema">
+        <h3 onclick="toggle(this)">Lenguajes y Paradigmas</h3>
+        <div class="detalle">
+          <p>Paradigmas principales: imperativo (secuencial), orientado a objetos, funcional y lógico. Cada uno tiene su enfoque y ventajas.</p>
+        </div>
+      </div>
+      <div class="tema">
+        <h3 onclick="toggle(this)">Estructuras de Control</h3>
+        <div class="detalle">
+          <p>Condicionales (if-else), bucles (for, while) y saltos (break, continue).</p>
+        </div>
+      </div>
+      <div class="tema">
+        <h3 onclick="toggle(this)">Funciones y Procedimientos</h3>
+        <div class="detalle">
+          <p>Bloques de código reutilizables que reciben parámetros y pueden devolver valores.</p>
+        </div>
+      </div>
+      <!-- Cuestionario Unidad 3 -->
+      <div class="tema">
+        <h3 onclick="toggle(this)">Cuestionario Unidad 3</h3>
+        <div class="detalle">
+          <form id="quizU3" class="cuestionario">
+            <p>1. ¿Qué paradigma se basa en objetos que contienen datos y métodos?</p>
+            <label><input type="radio" name="q10" value="correcto"> Orientado a objetos</label>
+            <label><input type="radio" name="q10" value="incorrecto"> Funcional</label>
+
+            <p>2. ¿Cuál es la estructura de control que ejecuta un bloque mientras se cumple una condición?</p>
+            <label><input type="radio" name="q11" value="correcto"> Bucle while</label>
+            <label><input type="radio" name="q11" value="incorrecto"> Condicional if</label>
+
+            <p>3. ¿Qué permite reutilizar código en diferentes partes de un programa?</p>
+            <label><input type="radio" name="q12" value="correcto"> Funciones</label>
+            <label><input type="radio" name="q12" value="incorrecto"> Variables</label>
+
+            <br><button type="button" onclick="calificar('quizU3','resultadoU3',3)">Calificar</button>
+            <p id="resultadoU3" class="resultado"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer>
-    Jeniffer Zambrano — Ingeniería en Software — Universidad Técnica de Cotopaxi
+    © 2026 - Material didáctico para Programación Básica y Algoritmia
   </footer>
 
-</div>
-
-<script>
-  const tabs = document.querySelectorAll('.tab-btn');
-  const panels = document.querySelectorAll('.panel');
-  const indicator = document.getElementById('tab-indicator');
-
-  function moveIndicator(tab){
-    indicator.style.left = tab.offsetLeft + 'px';
-    indicator.style.width = tab.offsetWidth + 'px';
-  }
-
-  window.addEventListener('load', () => moveIndicator(document.querySelector('.tab-btn[aria-selected="true"]')));
-  window.addEventListener('resize', () => moveIndicator(document.querySelector('.tab-btn[aria-selected="true"]')));
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const target = tab.dataset.target;
-
-      tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
-      tab.setAttribute('aria-selected', 'true');
-      moveIndicator(tab);
-
-      panels.forEach(p => p.setAttribute('aria-hidden', 'true'));
-      document.getElementById('panel-' + target).setAttribute('aria-hidden', 'false');
-    });
-
-    tab.addEventListener('keydown', (e) => {
-      const tabArray = Array.from(tabs);
-      const index = tabArray.indexOf(tab);
-      if(e.key === 'ArrowRight'){
-        tabArray[(index + 1) % tabArray.length].focus();
-        tabArray[(index + 1) % tabArray.length].click();
+  <!-- ==================== SCRIPTS ==================== -->
+  <script>
+    // Función para desplegar/colapsar secciones
+    function toggle(element) {
+      // El siguiente elemento hermano es el contenedor que se muestra/oculta
+      var target = element.nextElementSibling;
+      if (target) {
+        target.classList.toggle('mostrar');
       }
-      if(e.key === 'ArrowLeft'){
-        tabArray[(index - 1 + tabArray.length) % tabArray.length].focus();
-        tabArray[(index - 1 + tabArray.length) % tabArray.length].click();
+    }
+
+    // Conversor decimal -> binario
+    function convertirBinario() {
+      var input = document.getElementById('decimalInput');
+      var resultado = document.getElementById('resultadoBinario');
+      var num = parseInt(input.value);
+      if (isNaN(num) || num < 0) {
+        resultado.textContent = 'Por favor, ingresa un número entero positivo.';
+        return;
+      }
+      resultado.textContent = 'Binario: ' + num.toString(2);
+    }
+
+    // Simplificación booleana (ejemplo didáctico)
+    function simplificar() {
+      var resultado = document.getElementById('resultadoSimplificacion');
+      resultado.textContent = 'A + A·B = A  (Ley de absorción)';
+    }
+
+    // Calificador de cuestionarios
+    function calificar(formId, resultadoId, totalPreguntas) {
+      var form = document.getElementById(formId);
+      var inputs = form.querySelectorAll('input[type="radio"]:checked');
+      var aciertos = 0;
+      inputs.forEach(function(input) {
+        if (input.value === 'correcto') {
+          aciertos++;
+        }
+      });
+      var resultado = document.getElementById(resultadoId);
+      resultado.textContent = 'Has acertado ' + aciertos + ' de ' + totalPreguntas + ' preguntas.';
+      if (aciertos === totalPreguntas) {
+        resultado.textContent += ' ¡Perfecto! 🎉';
+      } else if (aciertos >= totalPreguntas / 2) {
+        resultado.textContent += ' ¡Bien!';
+      } else {
+        resultado.textContent += ' Sigue practicando.';
+      }
+    }
+
+    // (Opcional) Expandir la primera unidad al cargar para mostrar contenido
+    window.addEventListener('DOMContentLoaded', function() {
+      var primeraUnidad = document.querySelector('.unidad h2');
+      if (primeraUnidad) {
+        toggle(primeraUnidad);
       }
     });
-  });
-</script>
-
+  </script>
 </body>
 </html>
